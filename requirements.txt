@@ -1,1 +1,2 @@
 recipe-scrapers==14.40.0
+gunicorn
