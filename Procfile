@@ -1,1 +1,1 @@
-web: gunicorn schema_checker:app
+web: gunicorn app:app
