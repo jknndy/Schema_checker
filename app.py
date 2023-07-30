@@ -23,7 +23,7 @@ def index():
                 'nutrients': scraper.nutrients(),
                 'category': scraper.category(),
                 'cuisine': scraper.cuisine(),
-                'rating': scraper.rating(),
+                'ratings': scraper.ratings(),
                 'description': scraper.description()
                 
             }
