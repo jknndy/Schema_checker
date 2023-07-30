@@ -21,6 +21,10 @@ def index():
                 'instructions_list': scraper.instructions_list(),
                 'yields': scraper.yields(),
                 'nutrients': scraper.nutrients()
+                'category': scraper.category()
+                'cuisine': scraper.cuisine()
+                'description': scraper.description()
+                
             }
         except Exception as e:
             result = {'success': False, 'error_message': str(e)}
