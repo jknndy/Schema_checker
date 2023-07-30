@@ -20,9 +20,9 @@ def index():
                 'instructions': scraper.instructions(),
                 'instructions_list': scraper.instructions_list(),
                 'yields': scraper.yields(),
-                'nutrients': scraper.nutrients()
-                'category': scraper.category()
-                'cuisine': scraper.cuisine()
+                'nutrients': scraper.nutrients(),
+                'category': scraper.category(),
+                'cuisine': scraper.cuisine(),
                 'description': scraper.description()
                 
             }
