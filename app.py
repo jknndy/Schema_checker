@@ -23,8 +23,9 @@ def index():
                 'nutrients': scraper.nutrients(),
                 'category': scraper.category(),
                 'cuisine': scraper.cuisine(),
+                'ratings': scraper.ratings(),
                 'description': scraper.description(),
-                'ratings': scraper.ratings()
+                'author': scraper.author()
                 
             }
         except Exception as e:
