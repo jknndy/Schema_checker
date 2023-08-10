@@ -3,7 +3,7 @@ from recipe_scrapers import scrape_me
 
 app = Flask(__name__)
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/schema', methods=['GET', 'POST'])
 def index():
     url = request.form.get('url') if request.method == 'POST' else None
 
@@ -40,3 +40,11 @@ def index():
 
 if __name__ == '__main__':
     app.run()
+
+@app.route('/')
+def homepage():
+    return render_template('homepage.html')
+
+@app.route('/list')
+def list_page():
+    return render_template('list.html')
