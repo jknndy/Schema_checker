@@ -25,12 +25,12 @@ a { color: #2196F3; }
             copyText.select();
             document.execCommand("copy");
         }
-
+    
         $("#scrapeForm").submit(function(event) {
             event.preventDefault();
             var url = $("#url").val();
-
-            $.post("/", { url: url }, function(data) {
+    
+            $.post("/schema", { url: url }, function(data) {
                 $("#output").val(JSON.stringify(data));
             });
         });

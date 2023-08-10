@@ -7,26 +7,31 @@ app = Flask(__name__)
 def index():
     url = request.form.get('url') if request.method == 'POST' else None
 
+    def get_attribute(attribute_func):
+        try:
+            return attribute_func()
+        except:
+            return "not available"
+
     if url:
         try:
             scraper = scrape_me(url, wild_mode=True)
             result = {
                 'success': True,
-                'title': scraper.title(),
-                'host': scraper.host(),
-                'total_time': scraper.total_time(),
-                'image': scraper.image(),
-                'ingredients': scraper.ingredients(),
-                'instructions': scraper.instructions(),
-                'instructions_list': scraper.instructions_list(),
-                'yields': scraper.yields(),
-                'nutrients': scraper.nutrients(),
-                'category': scraper.category(),
-                'cuisine': scraper.cuisine(),
-                'ratings': scraper.ratings(),
-                'description': scraper.description(),
-                'author': scraper.author()
-                
+                'title': get_attribute(scraper.title),
+                'host': get_attribute(scraper.host),
+                'total_time': get_attribute(scraper.total_time),
+                'image': get_attribute(scraper.image),
+                'ingredients': get_attribute(scraper.ingredients),
+                'instructions': get_attribute(scraper.instructions),
+                'instructions_list': get_attribute(scraper.instructions_list),
+                'yields': get_attribute(scraper.yields),
+                'nutrients': get_attribute(scraper.nutrients),
+                'category': get_attribute(scraper.category),
+                'cuisine': get_attribute(scraper.cuisine),
+                'ratings': get_attribute(scraper.ratings),
+                'description': get_attribute(scraper.description),
+                'author': get_attribute(scraper.author)
             }
         except Exception as e:
             result = {'success': False, 'error_message': str(e)}
