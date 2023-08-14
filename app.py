@@ -31,7 +31,8 @@ def index():
                 'cuisine': get_attribute(scraper.cuisine),
                 'ratings': get_attribute(scraper.ratings),
                 'description': get_attribute(scraper.description),
-                'author': get_attribute(scraper.author)
+                'author': get_attribute(scraper.author),
+                'category': get_attribute(scraper.category)
             }
         except Exception as e:
             result = {'success': False, 'error_message': str(e)}
