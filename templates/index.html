@@ -16,7 +16,7 @@ a { color: #2196F3; }
         <input type="submit" value="Submit">
     </form>
     <br>
-    <textarea id="output" rows="4" cols="50"></textarea>
+    <textarea id="output" rows="10" cols="50"></textarea>
     <button onclick="myFunction()">Copy text</button>
 
     <script>
@@ -31,7 +31,11 @@ a { color: #2196F3; }
             var url = $("#url").val();
     
             $.post("/schema", { url: url }, function(data) {
-                $("#output").val(JSON.stringify(data));
+                var formattedOutput = "";
+                for (var key in data) {
+                    formattedOutput += key + ": " + data[key] + "\n";
+                }
+                $("#output").val(formattedOutput);
             });
         });
     </script>
