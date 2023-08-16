@@ -40,7 +40,11 @@ def index():
         result = {'success': False, 'error_message': 'Please provide a valid URL.'}
 
     if request.method == 'POST':
-        return jsonify(result)
+        response = jsonify(result)
+        response.headers.add('Content-Type', 'text/plain')  # Set response content type to plain text
+        response_data = "\n".join(f"{key}: {value}" for key, value in result.items())
+        response.set_data(response_data)
+        return response
     else:
         return render_template('index.html')
 
