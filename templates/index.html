@@ -18,26 +18,23 @@ a { color: #2196F3; }
     <br>
     <textarea id="output" rows="10" cols="50"></textarea>
     <button onclick="myFunction()">Copy text</button>
-
+    <button id="generateTest">Generate Test</button>
     <script>
-        function myFunction() {
-            var copyText = document.getElementById("output");
-            copyText.select();
-            document.execCommand("copy");
-        }
-    
-        $("#scrapeForm").submit(function(event) {
-            event.preventDefault();
-            var url = $("#url").val();
-    
-            $.post("/schema", { url: url }, function(data) {
-                var formattedOutput = "";
-                for (var key in data) {
-                    formattedOutput += key + ": " + data[key] + "\n";
+        $("#generateTest").click(function() {
+            var data = {
+                host: $("#host").val(),
+                author: $("#author").val(),
+            };
+            $.ajax({
+                type: "POST",
+                url: "/generate_test",
+                data: JSON.stringify(data),
+                contentType: "application/json",
+                success: function(response) {
+                    window.location.href = "/generate_test";
                 }
-                $("#output").val(formattedOutput);
             });
         });
     </script>
-</body>
+    </body>
 </html>
